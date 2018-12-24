@@ -9,15 +9,13 @@ import (
 	micro "github.com/micro/go-micro"
 )
 
-var Servicec micro.Service
-
 func main() {
-	Servicec = micro.NewService(
+	funct.Servicec = micro.NewService(
 		micro.Name(funct.Namespace+".Web"),
 		micro.Registry(funct.Reg),
 	)
 
-	Servicec.Init()
+	funct.Servicec.Init()
 	wd, err := os.Getwd()
 	if err != nil {
 		log.Fatalln(err)
@@ -31,7 +29,7 @@ func main() {
 	http.ListenAndServe(":8888", mux)
 }
 func handleRPCWeb(w http.ResponseWriter, r *http.Request) {
-	funct.HandleJSONRPC(Servicec, r)
+	funct.HandleJSONRPC(funct.Servicec, r)
 	////Here add view Render
 }
 func handleRPCApi(w http.ResponseWriter, r *http.Request) {
@@ -52,7 +50,7 @@ func handleRPCApi(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "OPTIONS" {
 		return
 	}
-	w.Write(funct.HandleJSONRPC(Servicec, r))
+	w.Write(funct.HandleJSONRPC(funct.Servicec, r))
 	return
 
 }
