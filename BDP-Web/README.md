@@ -1,4 +1,4 @@
-# BDP-View
+# BDP-Web
 
 This is Web folder.
  
