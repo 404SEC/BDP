@@ -1,5 +1,7 @@
 # BDP-Web
 
-This is Web folder.
+General Gateway of Platform Web Management
+
+
  
  
